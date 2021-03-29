@@ -1565,9 +1565,9 @@
     stack-trace "0.0.10"
 
 "@polka/url@^1.0.0-next.9":
-  version "1.0.0-next.11"
-  resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.11.tgz#aeb16f50649a91af79dbe36574b66d0f9e4d9f71"
-  integrity sha512-3NsZsJIA/22P3QUyrEDNA2D133H4j224twJrdipXN38dpnIOzAbUDtOwkcJ5pXmn75w7LSQDjA4tO9dm1XlqlA==
+  version "1.0.0-next.12"
+  resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.12.tgz#431ec342a7195622f86688bbda82e3166ce8cb28"
+  integrity sha512-6RglhutqrGFMO1MNUXp95RBuYIuc8wTnMAV5MUhLmjTOy78ncwOw7RgeQ/HeymkKXRhZd0s2DNrM1rL7unk3MQ==
 
 "@stylelint/postcss-css-in-js@^0.37.2":
   version "0.37.2"
@@ -1740,7 +1740,7 @@
     "@types/relateurl" "*"
     "@types/uglify-js" "*"
 
-"@types/http-proxy@^1.17.4":
+"@types/http-proxy@^1.17.5":
   version "1.17.5"
   resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.5.tgz#c203c5e6e9dc6820d27a40eb1e511c70a220423d"
   integrity sha512-GNkDE7bTv6Sf8JbV2GksknKOsk7OznNYHSdrtvPJXO0qJ9odZig6IZKUi5RFGi6d1bf6dgIAe4uXi3DBc7069Q==
@@ -2440,10 +2440,10 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^7.0.2:
-  version "7.2.4"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.2.4.tgz#8e239d4d56cf884bccca8cca362f508446dc160f"
-  integrity sha512-nBeQgg/ZZA3u3SYxyaDvpvDtgZ/EZPF547ARgZBrG9Bhu1vKDwAIjtIf+sDtJUKa2zOcEbmRLBRSyMraS/Oy1A==
+ajv@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.0.1.tgz#dac101898a87f8ebb57fea69617e8096523c628c"
+  integrity sha512-46ZA4TalFcLLqX1dEU3dhdY38wAtDydJ4e7QQTVekLUTzXkb1LfqU6VOBXC/a9wiv4T094WURqJH6ZitF92Kqw==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -4730,6 +4730,11 @@ fast-levenshtein@^2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fast-xml-parser@^3.19.0:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-3.19.0.tgz#cb637ec3f3999f51406dd8ff0e6fc4d83e520d01"
+  integrity sha512-4pXwmBplsCPv8FOY1WRakF970TjNGnGnfbOnLqjlYvMiF1SR3yOHyxMR/YCXpPTOspNF5gwudqktIP4VsWkvBg==
+
 fastest-levenshtein@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/fastest-levenshtein/-/fastest-levenshtein-1.0.12.tgz#9990f7d3a88cc5a9ffd1f1745745251700d497e2"
@@ -5451,14 +5456,15 @@ http-errors@~1.7.2:
     toidentifier "1.0.0"
 
 http-proxy-middleware@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-1.0.6.tgz#0618557722f450375d3796d701a8ac5407b3b94e"
-  integrity sha512-NyL6ZB6cVni7pl+/IT2W0ni5ME00xR0sN27AQZZrpKn1b+qRh+mLbBxIq9Cq1oGfmTc7BUq4HB77mxwCaxAYNg==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-1.1.0.tgz#b896b2cc6836019af4a4f2d5f7b21b99c77ea13f"
+  integrity sha512-OnjU5vyVgcZVe2AjLJyMrk8YLNOC2lspCHirB5ldM+B/dwEfZ5bgVTrFyzE9R7xRWAP/i/FXtvIqKjTNEZBhBg==
   dependencies:
-    "@types/http-proxy" "^1.17.4"
+    "@types/http-proxy" "^1.17.5"
+    camelcase "^6.2.0"
     http-proxy "^1.18.1"
     is-glob "^4.0.1"
-    lodash "^4.17.20"
+    is-plain-obj "^3.0.0"
     micromatch "^4.0.2"
 
 http-proxy@^1.18.1:
@@ -5878,6 +5884,11 @@ is-plain-obj@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
   integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
 
+is-plain-obj@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-3.0.0.tgz#af6f2ea14ac5a646183a5bbdb5baabbc156ad9d7"
+  integrity sha512-gwsOE28k+23GP1B6vFl1oVh/WOzmawBrKwo5Ev6wMKzPkaXaCDIQKzLnvsA42DRlbVTWorkgTKIviAKCWkfUwA==
+
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -5936,6 +5947,13 @@ is-svg@^3.0.0:
   integrity sha512-gi4iHK53LR2ujhLVVj+37Ykh9GLqYHX6JOVXbLAucaG/Cqw9xwdFOjDM2qeifLs1sF1npXXFvDu0r5HNgCMrzQ==
   dependencies:
     html-comment-regex "^1.1.0"
+
+is-svg@^4.2.2:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/is-svg/-/is-svg-4.3.1.tgz#8c63ec8c67c8c7f0a8de0a71c8c7d58eccf4406b"
+  integrity sha512-h2CGs+yPUyvkgTJQS9cJzo9lYK06WgRiXUqBBHtglSzVKAuH4/oWsqk7LGfbSa1hGk9QcZ0SyQtVggvBA8LZXA==
+  dependencies:
+    fast-xml-parser "^3.19.0"
 
 is-symbol@^1.0.2, is-symbol@^1.0.3:
   version "1.0.3"
@@ -6269,10 +6287,20 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
+lodash.flatten@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
+  integrity sha1-8xwiIlqWMtK7+OSt2+8kCqdlph8=
 
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
@@ -6298,6 +6326,11 @@ lodash.templatesettings@^4.0.0:
   integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
   dependencies:
     lodash._reinterpolate "^3.0.0"
+
+lodash.truncate@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
+  integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -8739,9 +8772,9 @@ run-queue@^1.0.0, run-queue@^1.0.3:
     aproba "^1.1.1"
 
 rxjs@^6.6.0, rxjs@^6.6.6:
-  version "6.6.6"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.6.tgz#14d8417aa5a07c5e633995b525e1e3c0dec03b70"
-  integrity sha512-/oTwee4N4iWzAMAL9xdGKjkEHmIwupR3oXbQjCKywF1BeFohswF3vZdogbmEF6pZkOsXTzWkrZszrWpQTByYVg==
+  version "6.6.7"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
+  integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
   dependencies:
     tslib "^1.9.0"
 
@@ -9552,12 +9585,17 @@ svgo@^1.0.0:
     util.promisify "~1.0.0"
 
 table@^6.0.4, table@^6.0.7:
-  version "6.0.7"
-  resolved "https://registry.yarnpkg.com/table/-/table-6.0.7.tgz#e45897ffbcc1bcf9e8a87bf420f2c9e5a7a52a34"
-  integrity sha512-rxZevLGTUzWna/qBLObOe16kB2RTnnbhciwgPbMMlazz1yZGVEgnZK762xyVdVznhqxrfCeBMmMkgOOaPwjH7g==
+  version "6.0.8"
+  resolved "https://registry.yarnpkg.com/table/-/table-6.0.8.tgz#b63f35af8d90601de282a3292226007a9429644f"
+  integrity sha512-OBAdezyozae8IvjHGXBDHByVkLCcsmffXUSj8LXkNb0SluRd4ug3GFCjk6JynZONIPhOkyr0Nnvbq1rlIspXyQ==
   dependencies:
-    ajv "^7.0.2"
-    lodash "^4.17.20"
+    ajv "^8.0.1"
+    is-boolean-object "^1.1.0"
+    is-number-object "^1.0.4"
+    is-string "^1.0.5"
+    lodash.clonedeep "^4.5.0"
+    lodash.flatten "^4.4.0"
+    lodash.truncate "^4.4.2"
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
@@ -9893,9 +9931,9 @@ ufo@^0.6.10:
   integrity sha512-sMbJnrBcKKsbVyr6++hb0n9lCmrMqkJrNnJIOJ3sckeqY6NMfAULcRGbBWcASSnN1HDV3YqiGCPzi9RVs511bw==
 
 uglify-js@^3.5.1:
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.13.2.tgz#fe10319861bccc8682bfe2e8151fbdd8aa921c44"
-  integrity sha512-SbMu4D2Vo95LMC/MetNaso1194M1htEA+JrqE9Hk+G2DhI+itfS9TRu9ZKeCahLDNa/J3n4MqUJ/fOHMzQpRWw==
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.13.3.tgz#ce72a1ad154348ea2af61f50933c76cc8802276e"
+  integrity sha512-otIc7O9LyxpUcQoXzj2hL4LPWKklO6LJWoJUzNa8A17Xgi4fOeDC8FBDOLHnC/Slo1CQgsZMcM6as0M76BZaig==
 
 unbox-primitive@^1.0.0:
   version "1.0.1"
