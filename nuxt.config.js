@@ -72,7 +72,7 @@ export default {
   },
 
   env: {
-    QUERY_URL: "http://127.0.0.1:8080/gql",
-    WS_URL: "ws://127.0.0.1:8080/gql",
+    QUERY_URL: "https://api-poll.komodohype.dev/gql",
+    WS_URL: "wss://wss-poll.komodohype.dev",
   },
 };

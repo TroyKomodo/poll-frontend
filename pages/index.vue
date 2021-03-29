@@ -14,18 +14,18 @@
           v-model="option.value"
           maxlength="64"
           placeholder="Enter poll option"
-          @keyup="i === options.length - 1 && addNew()"
           :required="opts.length < 2"
+          @keyup="i === options.length - 1 && addNew()"
         />
       </li>
     </ul>
     <div class="options">
-      <span @click="checkIP = !checkIP" class="cursor"
+      <span class="cursor" @click="checkIP = !checkIP"
         ><font-awesome-icon
           :icon="checkIP ? ['fas', 'check-square'] : ['fas', 'square']"
         />IP Duplication Checking</span
       >
-      <span @click="multiAnswer = !multiAnswer" class="cursor"
+      <span class="cursor" @click="multiAnswer = !multiAnswer"
         ><font-awesome-icon
           :icon="multiAnswer ? ['fas', 'check-square'] : ['fas', 'square']"
         />Allow multiple answers</span
@@ -33,8 +33,8 @@
       <div class="expiry">
         <span>Expiry in seconds</span
         ><input
-          type="number"
           v-model="expiry"
+          type="number"
           min="60"
           max="31536000"
           placeholder="Type the number of seconds that people will have to vote on this poll here"
@@ -71,33 +71,6 @@ import { createNewPoll, createNewDraft, getDraft } from "@/assets/funcs";
 
 export default Vue.extend({
   layout: "normal",
-  computed: {
-    opts() {
-      const os: string[] = [];
-      this.options.forEach((o) => {
-        if (o.value !== "") {
-          os.push(o.value);
-        }
-      });
-      return os;
-    },
-    draft() {
-      return this.$route.query.draft || "";
-    },
-  },
-  data() {
-    return {
-      title: "",
-      checkIP: true,
-      multiAnswer: false,
-      expiry: "",
-      options: [{ value: "" }, { value: "" }, { value: "" }],
-      errorText: "",
-      creating: false,
-      creatingDraft: false,
-      callback: () => {},
-    };
-  },
   async asyncData({ route, app }) {
     if (typeof route.query.draft !== "string") return {};
 
@@ -121,51 +94,18 @@ export default Vue.extend({
       options,
     };
   },
-  methods: {
-    tryCreate() {
-      this.callback = this.createPoll;
-    },
-    tryDraft() {
-      this.callback = this.createDraft;
-    },
-    addNew() {
-      if (
-        this.options[this.options.length - 1].value !== "" &&
-        this.options.length < 20
-      ) {
-        this.options.push({ value: "" });
-      }
-    },
-    async createPoll() {
-      this.creating = true;
-      const { poll } = await createNewPoll(
-        this,
-        this.title,
-        this.checkIP,
-        this.multiAnswer,
-        this.expiry ? parseInt(this.expiry) : undefined,
-        this.opts
-      );
-      this.$router.push(`/${poll.id}`);
-      setTimeout(() => {
-        this.creating = false;
-      }, 1500);
-    },
-    async createDraft() {
-      this.creatingDraft = true;
-      const { poll } = await createNewDraft(
-        this,
-        this.title,
-        this.checkIP,
-        this.multiAnswer,
-        this.expiry ? parseInt(this.expiry) : undefined,
-        this.opts
-      );
-      this.$router.push(`/?draft=${poll.id}`);
-      setTimeout(() => {
-        this.creatingDraft = false;
-      }, 1500);
-    },
+  data() {
+    return {
+      title: "",
+      checkIP: true,
+      multiAnswer: false,
+      expiry: "",
+      options: [{ value: "" }, { value: "" }, { value: "" }],
+      errorText: "",
+      creating: false,
+      creatingDraft: false,
+      callback: () => {},
+    };
   },
   head() {
     return {
@@ -235,9 +175,22 @@ export default Vue.extend({
       ],
     };
   },
+  computed: {
+    opts() {
+      const os: string[] = [];
+      this.options.forEach((o) => {
+        if (o.value !== "") {
+          os.push(o.value);
+        }
+      });
+      return os;
+    },
+    draft() {
+      return this.$route.query.draft || "";
+    },
+  },
   watch: {
     async draft(newValue) {
-      console.log(newValue);
       if (newValue) {
         const draft = await getDraft(this, newValue);
         if (!draft) {
@@ -267,6 +220,52 @@ export default Vue.extend({
         this.options = [{ value: "" }, { value: "" }, { value: "" }];
         this.errorText = "";
       }
+    },
+  },
+  methods: {
+    tryCreate() {
+      this.callback = this.createPoll;
+    },
+    tryDraft() {
+      this.callback = this.createDraft;
+    },
+    addNew() {
+      if (
+        this.options[this.options.length - 1].value !== "" &&
+        this.options.length < 20
+      ) {
+        this.options.push({ value: "" });
+      }
+    },
+    async createPoll() {
+      this.creating = true;
+      const { poll } = await createNewPoll(
+        this,
+        this.title,
+        this.checkIP,
+        this.multiAnswer,
+        this.expiry ? parseInt(this.expiry) : undefined,
+        this.opts
+      );
+      this.$router.push(`/${poll.id}`);
+      setTimeout(() => {
+        this.creating = false;
+      }, 1500);
+    },
+    async createDraft() {
+      this.creatingDraft = true;
+      const { poll } = await createNewDraft(
+        this,
+        this.title,
+        this.checkIP,
+        this.multiAnswer,
+        this.expiry ? parseInt(this.expiry) : undefined,
+        this.opts
+      );
+      this.$router.push(`/?draft=${poll.id}`);
+      setTimeout(() => {
+        this.creatingDraft = false;
+      }, 1500);
     },
   },
 });

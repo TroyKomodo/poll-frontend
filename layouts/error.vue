@@ -7,6 +7,81 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  head() {
+    return {
+      title: "KomodoPoll - 404 Not found",
+      meta: [
+        // hid is used as unique identifier. Do not use "vmid` for it as it will not work
+        {
+          hid: "apple-mobile-web-app-title",
+          name: "apple-mobile-web-app-title",
+          content: "KomodoPoll - 404 Not found",
+        },
+        {
+          hid: "og:title",
+          name: "og:title",
+          content: "KomodoPoll - 404 Not found",
+        },
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: "KomodoPoll - 404 Not found",
+        },
+        {
+          hid: "og:site_name",
+          name: "og:site_name",
+          content: "KomodoPoll - 404 Not found",
+        },
+        {
+          hid: "og:url",
+          name: "og:url",
+          content: "https://poll.komodohype.dev",
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: "KomodoPoll - 404 Not found",
+        },
+        {
+          hid: "og:description",
+          name: "og:description",
+          content: "KomodoPoll - 404 Not found",
+        },
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: "/komodohype.webp",
+        },
+        {
+          hid: "og:image",
+          name: "og:image",
+          content: "/komodohype.webp",
+        },
+        {
+          hid: "twitter:site",
+          name: "twitter:site",
+          content: "@troydota",
+        },
+        {
+          hid: "twitter:image:alt",
+          name: "twitter:image:alt",
+          content: "KomodoHype",
+        },
+        {
+          hid: "og:type",
+          name: "og:type",
+          content: "website",
+        },
+      ],
+    };
+  },
+});
+</script>
+
 <style scoped lang="scss">
 .error {
   display: flex;

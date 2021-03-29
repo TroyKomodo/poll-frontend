@@ -83,11 +83,11 @@ mutation newDraft($poll: PollInput!){
 `;
 
 function makeid(length: number) {
-  var result = "";
-  var characters =
+  let result = "";
+  const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
@@ -173,7 +173,7 @@ export function getPollVotesSubscribe(
   const query = {
     query: getPollVotesSubscriptionQuery,
     variables: {
-      id: id,
+      id,
     },
     request_id: makeid(15),
   };
@@ -187,9 +187,14 @@ export function getPollVotesSubscribe(
       }
     };
     app.$ws.on("message", cb);
+    const openCB = () => {
+      app.$ws.Send(JSON.stringify(query));
+    }
+    app.$ws.on("open", openCB )
     app.$ws.Send(JSON.stringify(query));
     return () => {
       app.$ws.off("message", cb);
+      app.$ws.off("open", openCB)
       app.$ws.Send(
         JSON.stringify({
           sub_id: subID,

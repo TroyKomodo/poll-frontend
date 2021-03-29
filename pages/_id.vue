@@ -1,6 +1,6 @@
 <template>
-  <PollResults :poll="poll" :share="true" v-if="results" :now="now" />
-  <Poll :poll="poll" :share="true" :now="now" v-else />
+  <PollResults v-if="results" :poll="poll" :share="true" :now="now" />
+  <Poll v-else :poll="poll" :share="true" :now="now" />
 </template>
 
 <script lang="ts">
@@ -9,10 +9,15 @@ import { getPoll, getPollVotes, getPollVotesSubscribe } from "@/assets/funcs";
 
 export default Vue.extend({
   layout: "normal",
-  computed: {
-    results() {
-      return this.$route.name === "id-results";
-    },
+  async asyncData({ error, app, route }) {
+    const poll =
+      route.name === "id-results"
+        ? await getPollVotes(app, route.params.id)
+        : await getPoll(app, route.params.id);
+    if (!poll) return error({ statusCode: 404, message: "who" });
+    return {
+      poll,
+    };
   },
   data() {
     return {
@@ -22,13 +27,10 @@ export default Vue.extend({
       interval: null as null | NodeJS.Timeout,
     };
   },
-  mounted() {
-    if (this.results) {
-      this.unsub = getPollVotesSubscribe(this, this.poll.id, this.subCallback);
-    }
-    this.interval = setInterval(() => {
-      this.now = new Date();
-    }, 1000);
+  computed: {
+    results() {
+      return this.$route.name === "id-results";
+    },
   },
   watch: {
     results(newValue) {
@@ -43,6 +45,14 @@ export default Vue.extend({
       }
     },
   },
+  mounted() {
+    if (this.results) {
+      this.unsub = getPollVotesSubscribe(this, this.poll.id, this.subCallback);
+    }
+    this.interval = setInterval(() => {
+      this.now = new Date();
+    }, 1000);
+  },
   beforeDestroy() {
     if (this.unsub) {
       this.unsub();
@@ -50,16 +60,6 @@ export default Vue.extend({
     if (this.interval) {
       clearInterval(this.interval);
     }
-  },
-  async asyncData({ error, app, route }) {
-    const poll =
-      route.name === "id-results"
-        ? await getPollVotes(app, route.params.id)
-        : await getPoll(app, route.params.id);
-    if (!poll) return error({ statusCode: 404, message: "who" });
-    return {
-      poll,
-    };
   },
   methods: {
     subCallback(options: any) {

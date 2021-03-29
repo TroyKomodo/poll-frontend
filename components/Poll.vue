@@ -23,18 +23,18 @@
     <div class="actions">
       <button
         class="vote button"
-        @click="castVote"
         :disabled="voted || expired"
         :class="{ expired }"
         :title="expired ? expiryText : ''"
+        @click="castVote"
       >
         Vote
       </button>
       <button
         v-if="share"
         class="copy right button"
-        @click="copy"
         :disabled="coppied"
+        @click="copy"
       >
         <font-awesome-icon :icon="['fas', 'share-alt']" />{{
           coppied ? "Coppied" : "Copy Link"
@@ -67,9 +67,6 @@ export default Vue.extend({
       agoText: "",
       expired: false,
     };
-  },
-  created() {
-    this.computeExpiryText();
   },
   head() {
     const desc = `KomodoPoll - ${this.poll.title}`;
@@ -140,6 +137,14 @@ export default Vue.extend({
       ],
     };
   },
+  watch: {
+    now() {
+      this.computeExpiryText();
+    },
+  },
+  created() {
+    this.computeExpiryText();
+  },
   methods: {
     computeExpiryText(this: any) {
       this.agoText = moment(this.poll.created_at).from(this.now);
@@ -184,11 +189,6 @@ export default Vue.extend({
       setTimeout(() => {
         this.coppied = false;
       }, 1500);
-    },
-  },
-  watch: {
-    now(newValue) {
-      this.computeExpiryText();
     },
   },
 });

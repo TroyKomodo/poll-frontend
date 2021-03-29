@@ -31,8 +31,8 @@
       <button
         v-if="share"
         class="share right button"
-        @click="copy"
         :disabled="coppied"
+        @click="copy"
       >
         <font-awesome-icon :icon="['fas', 'share-alt']" />{{
           coppied ? "Coppied" : "Share"
@@ -51,22 +51,12 @@ import moment from "moment";
 
 export default Vue.extend({
   props: ["poll", "share", "now", "embed"],
-  computed: {
-    total() {
-      let i = 0;
-      this.poll.options.forEach((o: any) => (i += o.votes));
-      return i;
-    },
-  },
   data() {
     return {
       coppied: false,
       expiryText: "",
       agoText: "",
     };
-  },
-  created() {
-    this.computeExpiryText();
   },
   head() {
     const desc = `KomodoPoll Results - ${
@@ -143,6 +133,16 @@ export default Vue.extend({
         },
       ],
     };
+  },
+  computed: {
+    total() {
+      let i = 0;
+      this.poll.options.forEach((o: any) => (i += o.votes));
+      return i;
+    },
+  },
+  created() {
+    this.computeExpiryText();
   },
   methods: {
     computeExpiryText(this: any) {

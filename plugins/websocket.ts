@@ -10,6 +10,7 @@ class WS extends EventEmitter {
     if (!process.client) throw new Error("client only!");
     this.configure();
   }
+
   private configure() {
     this.emit("configure");
     this.open = false;
@@ -18,22 +19,29 @@ class WS extends EventEmitter {
     this.ws.onopen = this.onOpen.bind(this);
     this.ws.onclose = this.onClose.bind(this);
   }
+
   private onMessage(ev: Event) {
     this.emit("message", ev);
   }
+
   private onOpen() {
     this.open = true;
     this.emit("open");
   }
+
   private onClose() {
     this.emit("closed");
     if (this.destroyed) return;
-    this.configure();
+    setTimeout(() => {
+      this.configure();
+    }, 1000)
   }
+
   public async Send(data: string) {
     if (!this.open) await new Promise((resolve) => this.once("open", resolve));
     this.ws?.send(data);
   }
+
   public destroy() {
     this.destroyed = true;
     this.ws?.close();
@@ -61,12 +69,13 @@ declare module "@nuxt/types" {
 
 declare module "vuex/types/index" {
   // this.$myInjectedFunction inside Vuex stores
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Store<S> {
     $ws: WS;
   }
 }
 
-const myPlugin: Plugin = (context, inject) => {
+const myPlugin: Plugin = (_, inject) => {
   const ws = new WS();
   inject("ws", ws);
 };
