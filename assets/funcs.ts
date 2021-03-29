@@ -61,7 +61,7 @@ mutation votePoll($id: String!, $selection: [Int!]!){
 `;
 
 const createPollQuery = `
-mutation newPoll($poll: PollInput!){
+mutation newPoll($poll: PollDraftInput!){
   new(poll: $poll) {
     state
     poll {
@@ -72,7 +72,7 @@ mutation newPoll($poll: PollInput!){
 `;
 
 const createDraftQuery = `
-mutation newDraft($poll: PollInput!){
+mutation newDraft($poll: PollDraftInput!){
   newDraft(poll: $poll) {
     state
     poll {
