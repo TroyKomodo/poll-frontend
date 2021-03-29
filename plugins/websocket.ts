@@ -34,7 +34,7 @@ class WS extends EventEmitter {
     if (this.destroyed) return;
     setTimeout(() => {
       this.configure();
-    }, 1000)
+    }, 1000);
   }
 
   public async Send(data: string) {

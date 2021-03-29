@@ -189,12 +189,12 @@ export function getPollVotesSubscribe(
     app.$ws.on("message", cb);
     const openCB = () => {
       app.$ws.Send(JSON.stringify(query));
-    }
-    app.$ws.on("open", openCB )
+    };
+    app.$ws.on("open", openCB);
     app.$ws.Send(JSON.stringify(query));
     return () => {
       app.$ws.off("message", cb);
-      app.$ws.off("open", openCB)
+      app.$ws.off("open", openCB);
       app.$ws.Send(
         JSON.stringify({
           sub_id: subID,
