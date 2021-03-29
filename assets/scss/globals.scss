@@ -1,0 +1,35 @@
+:root {
+  font-size: max(16px, 1.5vmin);
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  font-weight: 300;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: rgb(255, 255, 255);
+  background-color: rgb(4, 12, 51);
+  word-break: break-word;
+  @media screen and (max-width: 300px) {
+    word-break: break-all;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: black;
+  &::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: black;
+  }
+}

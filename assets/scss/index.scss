@@ -1,0 +1,133 @@
+.index {
+  padding: 1rem;
+  background-color: hsla(27, 20%, 30%, 0.75);
+  ul {
+    list-style: none;
+    $border-color: #549b79;
+    li {
+      padding: 0.5rem;
+      padding-top: 1rem;
+      border-bottom: 1px solid $border-color;
+      display: flex;
+      cursor: pointer;
+      position: relative;
+      &:first-child {
+        border-top: 1px solid $border-color;
+      }
+      input {
+        width: 100%;
+        background-color: transparent;
+        border: unset;
+        color: white;
+        font-size: 1rem;
+        outline: unset;
+      }
+    }
+  }
+  .heading {
+    padding: 0.5rem;
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: unset;
+      color: white;
+      font-size: 1.5rem;
+      outline: unset;
+    }
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    grid-gap: 0.5rem;
+    svg {
+      margin-right: 0.5rem;
+    }
+    .cursor {
+      cursor: pointer;
+    }
+  }
+  .error {
+    text-align: center;
+    margin-top: 1rem;
+    color: #e04343;
+    font-weight: bold;
+    font-size: 1.5rem;
+    svg {
+      margin-right: 0.5rem;
+      vertical-align: -0.2rem;
+    }
+  }
+  .actions {
+    margin-top: 1rem;
+    display: flex;
+    grid-gap: 1rem;
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      .button {
+        width: 100% !important;
+        &.right {
+          margin-left: unset !important;
+        }
+      }
+    }
+    .button {
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      width: 15rem;
+      color: white;
+      border-radius: 0.5rem;
+      border: unset;
+      outline: unset;
+      transition: background-color 300ms ease;
+      text-decoration: unset;
+      text-align: center;
+      cursor: pointer;
+      &.right {
+        margin-left: auto;
+        & + .right {
+          margin-left: unset;
+        }
+      }
+      svg {
+        margin-right: 0.5rem;
+      }
+      &.create {
+        background-color: #ca3838;
+        &.expired {
+          cursor: not-allowed;
+        }
+        &:disabled {
+          background-color: #5a2c2c !important;
+        }
+        &:hover {
+          background-color: #aa0a0a;
+        }
+      }
+      &.draft {
+        background-color: #3bad27;
+        &.expired {
+          cursor: not-allowed;
+        }
+        &:disabled {
+          background-color: #52704d !important;
+        }
+        &:hover {
+          background-color: #267718;
+        }
+      }
+    }
+  }
+  .expiry {
+    display: flex;
+    input {
+      margin-left: 1rem;
+      flex-grow: 1;
+      background-color: transparent;
+      border: unset;
+      color: white;
+      font-size: 1rem;
+      outline: unset;
+    }
+  }
+}
