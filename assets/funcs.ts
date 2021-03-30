@@ -191,7 +191,7 @@ export function getPollVotesSubscribe(
       app.$ws.Send(JSON.stringify(query));
     };
     app.$ws.on("open", openCB);
-    app.$ws.Send(JSON.stringify(query));
+    if (app.$ws.open) app.$ws.Send(JSON.stringify(query));
     return () => {
       app.$ws.off("message", cb);
       app.$ws.off("open", openCB);
