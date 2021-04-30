@@ -5,7 +5,7 @@
       <span v-if="expiryText" class="right">{{ expiryText }}</span>
     </div>
     <ul>
-      <template v-for="(option, i) in poll.options">
+      <template v-for="(option, i) in sortedOptions">
         <li :key="`${i}-1`">
           <span>{{ option.title }}</span
           ><span class="value">{{ option.votes }} Votes</span>
@@ -139,6 +139,14 @@ export default Vue.extend({
       let i = 0;
       this.poll.options.forEach((o: any) => (i += o.votes));
       return i;
+    },
+    sortedOptions(): any[] {
+      if (!this.poll?.options) return [];
+      return this.poll.options
+        .slice()
+        .sort((v: { votes: number }, m: { votes: number }) =>
+          v.votes > m.votes ? -1 : 1
+        );
     },
   },
   created() {
